@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" nextobjectid="2">
+ <tileset firstgid="1" name="tileset_divers_transparent" tilewidth="16" tileheight="16">
+   <image source="tilesets/tileset_divers_transparent.png" width="1744" height="848"/>
+ </tileset>
+ <tileset firstgid="5778" name="meta_tiles" tilewidth="16" tileheight="16" spacing="1" margin="1">
+  <image source="tilesets/meta_tiles.png" width="100" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="Collidable" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKEb3r/m2ugACaumqqqqqqqqqqqqqqq+ftOAMAE=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJzt2rENgDAMBEAvQGoYGJYJQ5KGJgPYhe8l69svrvQ8It51s2mfI+Iaffte9zTu30G37P67ZfffLfzzzz///PPPf/Wa/PDPP//8888//9Vr8sM///zzzz///FevyQ///PPPP//881+9Jj/8888///zzz3/frv4/ru7q/+Pq/gBVMwpc
+  </data>
+ </layer>
+ <layer name="meta" width="64" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztz7ERADAMAjFPkcE9cbaAwuLue7RvZqXjXRs/Pz8/Pz9/+01+/Pz8/Pz8/O03+fHz8/Pz8/O33+THz8/Pz8/P336THz8/Pz8/P3/7TX78kj7StmpQ
+  </data>
+ </layer>
+ <objectgroup name="Objects">
+  <object id="1" name="SpawnPoint" x="181" y="153"/>
+ </objectgroup>
+</map>
