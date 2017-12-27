@@ -53,24 +53,23 @@ void TiledPlayer::init() {
 }
 
 void TiledPlayer::update(float dt) {
-  if(!_moveLeft && !_moveRight) {
-    setVelocityX(0);
+  float baseSpeed = 300; // this should be a constant somewhere...
+  float xVelo = 0;
+  float yVelo = 0;
+
+  if( !(_moveLeft && _moveRight) && (_moveLeft || _moveRight) ) {
+    xVelo = _moveLeft ? -1 : 1;
   }
-  if(_moveLeft && !_moveRight) {
-    setVelocityX(-300);
+  if( !(_moveUp && _moveDown) && (_moveUp || _moveDown) ) {
+    yVelo = _moveDown ? -1 : 1;
   }
-  if(!_moveLeft && _moveRight) {
-    setVelocityX(300);
+
+  if(xVelo != 0 && yVelo != 0) {
+    baseSpeed = baseSpeed/2.0;
   }
-  if(!_moveUp && ! _moveDown) {
-    setVelocityY(0);
-  }
-  if(_moveUp && ! _moveDown) {
-    setVelocityY(300);
-  }
-  if(!_moveUp &&  _moveDown) {
-    setVelocityY(-300);
-  }
+
+  setVelocityX(xVelo * baseSpeed);
+  setVelocityY(yVelo * baseSpeed);
 
   TiledCharacter::update(dt);
 }
