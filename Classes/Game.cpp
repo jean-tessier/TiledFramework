@@ -8,7 +8,7 @@ Game::Game() :
   _worldLayer(cocos2d::Layer::create()),
   _uiLayer(cocos2d::Layer::create()),
   _drawables(),
-  score(0)
+  _score(0)
 { }
 
 //Game::Game() :
@@ -46,8 +46,8 @@ bool Game::init()
       return false;
   }
 
-  audio = CocosDenshion::SimpleAudioEngine::getInstance();
-  audio->preloadEffect("sounds/pop.wav");
+  _audio = CocosDenshion::SimpleAudioEngine::getInstance();
+  _audio->preloadEffect("sounds/pop.wav");
   
   cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
   cocos2d::Vec2 origin = cocos2d::Director::getInstance()->getVisibleOrigin();
@@ -73,7 +73,7 @@ bool Game::init()
   _label->setPosition(cocos2d::Vec2(origin.x + visibleSize.width/2,
                           origin.y + visibleSize.height - _label->getContentSize().height));
 
-  _scorelabel = cocos2d::Label::createWithTTF(std::to_string(score), "fonts/Marker Felt.ttf", 24);
+  _scorelabel = cocos2d::Label::createWithTTF(std::to_string(_score), "fonts/Marker Felt.ttf", 24);
   _scorelabel->setPosition(cocos2d::Vec2(925,24));
 
   _uiLayer->addChild(_label, 1);
@@ -129,24 +129,24 @@ void Game::update(float dt) {
       emitter->setLife(1.5);
       emitter->setLifeVar(0.75);
       
-      if(soundCount < 15) {
-        soundID[soundIDIdx++] = audio->playEffect("sounds/pop.wav");
-        ++soundCount;
+      if(_soundCount < 15) {
+        _soundID[_soundIDIdx++] = _audio->playEffect("sounds/pop.wav");
+        ++_soundCount;
       }
       else {
-        soundIDIdx = (soundIDIdx+1)%15;
-        soundID[soundIDIdx] = audio->playEffect("sounds/pop.wav");
-        audio->stopEffect(soundID[soundIDIdx+1]);
+        _soundIDIdx = (_soundIDIdx+1)%15;
+        _soundID[_soundIDIdx] = _audio->playEffect("sounds/pop.wav");
+        _audio->stopEffect(_soundID[_soundIDIdx+1]);
       }
 
       (*iter)->getSprite()->retain();
       _worldLayer->removeChild((*iter)->getSprite());
       iter = _drawables.erase(iter);
-      score+=100;
+      _score+=100;
     }
     else ++iter;
   }
-  _scorelabel->setString(std::to_string(score));
+  _scorelabel->setString(std::to_string(_score));
 }
 
 void Game::menuCloseCallback(Ref* pSender)

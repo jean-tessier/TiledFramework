@@ -20,16 +20,16 @@ class Game : public cocos2d::Layer
 
   private:
     // Fix constructors for additions here...
+    CocosDenshion::SimpleAudioEngine* _audio;
     cocos2d::Layer* _worldLayer;
     cocos2d::Layer* _uiLayer;
+    cocos2d::Label* _scorelabel;
     std::list<Drawable*> _drawables;
     std::list<Drawable*> _freeables;
-    int score;
-    cocos2d::Label* _scorelabel;
-    CocosDenshion::SimpleAudioEngine* audio;
-    unsigned int soundID[15];
-    unsigned int soundIDIdx = 0;
-    unsigned int soundCount = 0;
+    int _score;
+    unsigned int _soundID[15];
+    unsigned int _soundIDIdx = 0;
+    unsigned int _soundCount = 0;
     //Drawable* _drawables[2];
 
     void update(float dt);
